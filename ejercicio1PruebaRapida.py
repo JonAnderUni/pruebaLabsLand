@@ -1,6 +1,10 @@
 import json
 from urllib.request import urlopen
 import csv
+"""
+    
+"""
+
 url = "https://labsland.com/api/labs?&country=ES&lang=es"
 respuesta = urlopen(url)
 datosJSON = json.loads(respuesta.read())
@@ -8,7 +12,7 @@ datosJSON = json.loads(respuesta.read())
   #datosJSON = json.load(archivo)
 
 data = ['Nombre Laboratorio', 'Descripcion Laboratorio', 'Institucion Laboratorio']
-#      NECESITO COGER SOLO EL DE LA UNI, LOS DEMAS A TOMAR POR CULO, CAMBIAR VARIABLES DE LOS FOR
+
 with open('laboratoriosUniversidad.csv','w') as file:
     write = csv.writer(file)
     write.writerow(data)
@@ -30,8 +34,8 @@ for dic_todo in datosJSON.values():
             elif(key == 'name'):
                 nombreLab = value
             elif(key == 'educationLevels'):
-                for prueba in value:
-                    if(prueba == 'hs' or prueba == 'ms'):
+                for cole in value:
+                    if(cole == 'hs' or cole == 'ms'):
                         paraImprimir = False
 
 
